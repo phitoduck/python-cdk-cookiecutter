@@ -5,8 +5,8 @@
             "path": "../infrastructure/",
         },
         {
-            "name": "{{cookiecutter.repo_slug}}-pkg",
-            "path": "../{{cookiecutter.repo_slug}}/",
+            "name": "{{cookiecutter.repo_name}}-pkg",
+            "path": "../{{cookiecutter.repo_name}}/",
         },
         {
             "name": "Top-level",
@@ -55,10 +55,10 @@
             "*docker-compose*": "dockercompose"
         },
         "isort.args": [
-            "--settings-path=${workspaceFolder}/{{ cookiecutter.repo_slug }}/pyproject.toml"
+            "--settings-path=${workspaceFolder}/{{ cookiecutter.repo_name }}/pyproject.toml"
         ],
         "black-formatter.args": [
-            "--config=${workspaceFolder}/{{ cookiecutter.repo_slug }}/pyproject.toml"
+            "--config=${workspaceFolder}/{{ cookiecutter.repo_name }}/pyproject.toml"
         ],
         "[python]": {
             "editor.codeActionsOnSave": {
@@ -68,15 +68,15 @@
         },
         "python.linting.pylintEnabled": true,
         "python.linting.pylintArgs": [
-            "--rcfile=${workspaceFolder}/{{ cookiecutter.repo_slug }}/pyproject.toml"
+            "--rcfile=${workspaceFolder}/{{ cookiecutter.repo_name }}/pyproject.toml"
         ],
         "python.formatting.provider": "black",
         "python.formatting.blackArgs": [
-            "--config=${workspaceFolder}/{{ cookiecutter.repo_slug }}/pyproject.toml"
+            "--config=${workspaceFolder}/{{ cookiecutter.repo_name }}/pyproject.toml"
         ],
         "python.linting.flake8Enabled": true,
         "python.linting.flake8Args": [
-            "--toml-config=${workspaceFolder}/{{ cookiecutter.repo_slug }}/pyproject.toml"
+            "--toml-config=${workspaceFolder}/{{ cookiecutter.repo_name }}/pyproject.toml"
         ],
         "python.analysis.autoImportCompletions": true,
         "python.analysis.indexing": true,

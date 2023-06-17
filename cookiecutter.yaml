@@ -1,0 +1,3 @@
+default_context:
+    repo_name: sample-full-stack-app
+    import_name: sample_full_stack_app

@@ -2,7 +2,23 @@
 
 An opinionated template for working with AWS CDK and Python.
 
-Opinions:
+## Usage
+
+```bash
+pip install --upgrade pipx
+pipx run cookiecutter https://github.com/phitoduck/python-cdk-cookiecutter.git \
+    --output-dir ./example \
+    --checkout main \
+    --directory cookiecutters
+
+pipx run cookiecutter ~/repos/extra/python-cdk-cookiecutter \
+    --output-dir ./example \
+    --checkout main \
+    --directory cookiecutters
+
+```
+
+## Opinions
 
 - Monorepo with 2-boilerplate packages; can be extended to any number
 - Editor support: pre-configured for VS Code, specifically a multi-root workspace

@@ -4,37 +4,37 @@ repos:
     hooks:
       - id: pylint
         args:
-          - --rcfile=./{{ cookiecutter.repo_slug }}/pyproject.toml
-        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_slug }}/Makefile|{{ cookiecutter.repo_slug }}/pyproject.toml|.pre-commit-config.yaml)
+          - --rcfile=./{{ cookiecutter.repo_name }}/pyproject.toml
+        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_name }}/Makefile|{{ cookiecutter.repo_name }}/pyproject.toml|.pre-commit-config.yaml)
   - repo: https://github.com/psf/black
     rev: 23.1.0
     hooks:
       - id: black
         args:
-          - --config=./{{ cookiecutter.repo_slug }}/pyproject.toml
-        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_slug }}/Makefile|{{ cookiecutter.repo_slug }}/pyproject.toml|.pre-commit-config.yaml)
+          - --config=./{{ cookiecutter.repo_name }}/pyproject.toml
+        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_name }}/Makefile|{{ cookiecutter.repo_name }}/pyproject.toml|.pre-commit-config.yaml)
   - repo: https://github.com/PyCQA/flake8
     rev: 6.0.0
     hooks:
       - id: flake8
         args:
-          - --toml-config=./{{ cookiecutter.repo_slug }}/pyproject.toml
+          - --toml-config=./{{ cookiecutter.repo_name }}/pyproject.toml
           - --radon-max-cc=8
         additional_dependencies:
           - radon
           - flake8-docstrings
           - Flake8-pyproject
-        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_slug }}/Makefile|{{ cookiecutter.repo_slug }}/pyproject.toml|.pre-commit-config.yaml)
+        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_name }}/Makefile|{{ cookiecutter.repo_name }}/pyproject.toml|.pre-commit-config.yaml)
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.4.0
     hooks:
       - id: check-merge-conflict
       - id: trailing-whitespace
-        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_slug }}/Makefile|{{ cookiecutter.repo_slug }}/pyproject.toml|.pre-commit-config.yaml)
+        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_name }}/Makefile|{{ cookiecutter.repo_name }}/pyproject.toml|.pre-commit-config.yaml)
         args:
           - --markdown-linebreak-ext=md
       - id: end-of-file-fixer
-        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_slug }}/Makefile|{{ cookiecutter.repo_slug }}/pyproject.toml|.pre-commit-config.yaml)
+        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_name }}/Makefile|{{ cookiecutter.repo_name }}/pyproject.toml|.pre-commit-config.yaml)
         exclude_types:
           - csv
           - svg
@@ -52,7 +52,7 @@ repos:
             ^path/to/another/big/file.csv
           )
       - id: requirements-txt-fixer
-        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_slug }}/Makefile|{{ cookiecutter.repo_slug }}/pyproject.toml|.pre-commit-config.yaml)
+        exclude: ^(.gitattributes|.gitignore|.projen/deps.json|.projen/files.json|.projen/tasks.json|.vscode/example-settings.json|.vscode/extensions.json|bitbucket-pipelines.yml|infrastructure/Makefile|infrastructure/pyproject.toml|Makefile|{{ cookiecutter.repo_name }}/Makefile|{{ cookiecutter.repo_name }}/pyproject.toml|.pre-commit-config.yaml)
       - id: forbid-new-submodules
       - id: no-commit-to-branch
         args:
@@ -63,7 +63,7 @@ repos:
     hooks:
       - id: isort
         args:
-          - --settings-path=./{{ cookiecutter.repo_slug }}/pyproject.toml
+          - --settings-path=./{{ cookiecutter.repo_name }}/pyproject.toml
   - repo: https://github.com/PyCQA/autoflake
     rev: v2.0.1
     hooks:

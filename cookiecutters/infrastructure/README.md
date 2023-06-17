@@ -1,2 +1,2 @@
-# {{ cookiecutter.repo_slug }}
+# {{ cookiecutter.repo_name }}
 

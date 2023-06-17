@@ -19,7 +19,7 @@ class Settings(BaseSettings):
     """
 
     aws_region: str = Field("us-west-2", description="The AWS region to deploy to.")
-    stack_name = "{{ cookiecutter.repo_slug }}"
+    stack_name = "{{ cookiecutter.repo_name }}"
 
     class Config:
         """

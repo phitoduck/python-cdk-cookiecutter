@@ -1,7 +1,7 @@
 version: "3.8"
 
 services:
-  {{ cookiecutter.repo_slug }}-api:
+  {{ cookiecutter.repo_name }}-api:
     build:
       context: .
       dockerfile: Dockerfile

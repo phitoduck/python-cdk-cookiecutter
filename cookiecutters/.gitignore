@@ -6,8 +6,8 @@
 !/bitbucket-pipelines.yml
 !/infrastructure/Makefile
 !/infrastructure/pyproject.toml
-!/{{ cookiecutter.repo_slug }}/Makefile
-!/{{ cookiecutter.repo_slug }}/pyproject.toml
+!/{{ cookiecutter.repo_name }}/Makefile
+!/{{ cookiecutter.repo_name }}/pyproject.toml
 *$py.class
 *.cover
 *.egg
