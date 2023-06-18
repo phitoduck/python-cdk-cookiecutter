@@ -1,7 +1,7 @@
 #!python
 
 """
-This file defines an AWS CDK "Application" (a set of Stacks).
+Define an AWS CDK "Application" (a set of Stacks).
 
 Use this script to deploy the infrastructure for this project to AWS.
 
@@ -27,7 +27,7 @@ Stack(
     APP,
     APP_SETTINGS.stack_name,
     settings=APP_SETTINGS,
-    description=".",
+    description="The infrastructure for {{cookiecutter.repo_name}}.",
     env=APP_SETTINGS.cdk_env,
 )
 

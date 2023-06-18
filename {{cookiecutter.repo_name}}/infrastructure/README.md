@@ -1,2 +1,1 @@
 # {{ cookiecutter.repo_name }}
-

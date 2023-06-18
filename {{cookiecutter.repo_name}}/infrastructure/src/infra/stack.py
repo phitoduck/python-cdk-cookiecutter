@@ -12,6 +12,7 @@ class Stack(cdk.Stack):
         self,
         scope: Construct,
         stack_id: str,
+        # pylint: disable=unused-argument
         settings: Settings,
         **kwargs,
     ) -> None:
@@ -22,5 +23,3 @@ class Stack(cdk.Stack):
         :param construct_id: The stack name.
         """
         super().__init__(scope=scope, id=stack_id, **kwargs)
-
-       

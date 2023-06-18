@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     class Config:
         """
         Pydantic model config.
-        
+
         Find the available configuration options here:
         https://docs.pydantic.dev/latest/usage/model_config/#options
         """
@@ -61,9 +61,10 @@ class Settings(BaseSettings):
             account=self.aws_account_id,
             region=self.aws_region,
         )
-    
+
     def dict(self, *args, **kwargs) -> dict:
         """Generate a dictionary representation of the model, optionally specifying which fields to include or exclude."""
+        # pylint: disable=bad-super-call
         to_return: dict = super(BaseSettings, self).dict(*args, **kwargs)
         to_return["cdk_env"] = self.cdk_env
         to_return["aws_account_id"] = self.aws_account_id

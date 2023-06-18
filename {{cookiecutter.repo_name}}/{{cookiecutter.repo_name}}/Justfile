@@ -32,7 +32,7 @@ unit-test:
 		--cov-report term-missing \
 		--cov-report html \
 		--cov-report xml \
-		--junitxml=./test-reports/junit.xml 
+		--junitxml=./test-reports/junit.xml
 
 full-test:
 	pytest tests/ --cov src/ \
@@ -43,13 +43,13 @@ full-test:
 
 serve-coverage-report:
 	@echo "serving test coverage site at http://localhost:3333"
-	python -m http.server 3333 --directory test-reports/htmlcov 
+	python -m http.server 3333 --directory test-reports/htmlcov
 
 tag-with-latest-version:
-	git tag $$(cat VERSION.txt) || echo "repository already tagged" 
+	git tag $$(cat VERSION.txt) || echo "repository already tagged"
 
 push-tags-to-remote:
-	git push origin --tags 
+	git push origin --tags
 
 clean:
 	find . \
