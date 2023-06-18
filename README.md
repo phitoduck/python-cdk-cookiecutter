@@ -27,11 +27,6 @@ pipx run cookiecutter https://github.com/phitoduck/python-cdk-cookiecutter.git
 ## Contributing
 
 ```bash
-# Create a sample project without input
-pipx run cookiecutter ~/repos/extra/python-cdk-cookiecutter \
-    --output-dir ./example \
-    --overwrite-if-exists \
-    --accept-hooks yes \
-    --no-input \
-    --config-file ./example-cookiecutter.yaml
+brew install just
+just install test
 ```
