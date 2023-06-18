@@ -56,9 +56,13 @@ def create_version_txt_symlinks(repo_root_dir: Path):
 
 
 def create_symlink(source_path: Path, target_path: Path):
+    """
+    Create the symlink:
+
+    - `target_path` -> `source_path`
+    """
     if target_path.exists():
         target_path.unlink()
-
     os.symlink(source_path, target_path)
 
 
