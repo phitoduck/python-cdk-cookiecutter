@@ -1,9 +1,10 @@
+
 AWS_REGION := "us-west-2"
 AWS_PROFILE := "mlops-club"
 
 cdk COMMAND: require-aws-login
-	AWS_PROFILE={{AWS_PROFILE}} \
-	cdk "{{COMMAND}}" --all --app "python infrastructure/app.py"
+	AWS_PROFILE=\{\{AWS_PROFILE}} \
+	cdk "\{\{COMMAND}}" --all --app "python infrastructure/app.py"
 
 install:
 	pip install --upgrade pip
@@ -18,7 +19,7 @@ require-aws-login:
 	#!/bin/bash
 
 	# Step 1: Determine if we are logged in
-	OUTPUT=$(aws s3 ls --profile {{AWS_PROFILE}} 2>&1)
+	OUTPUT=$(aws s3 ls --profile \{\{AWS_PROFILE}} 2>&1)
 
 	# Step 2: If we are not logged in, then login
 	if echo "$OUTPUT" | grep -q 'The SSO session associated with this profile has expired or is otherwise invalid.'; then
@@ -31,7 +32,7 @@ require-aws-login:
 # WARNING: this login only lasts for 8 hours
 login-to-aws:
     #!/bin/bash
-    SSO_AWS_PROFILE_NAME="{{AWS_PROFILE}}"
+    SSO_AWS_PROFILE_NAME="\{\{AWS_PROFILE}}"
     SSO_AWS_ACCOUNT_ID="630013828440"
     SSO_AWS_START_URL="https://d-926768adcc.awsapps.com/start"
     SSO_AWS_REGION="us-west-2"
@@ -109,3 +110,5 @@ clean:
 		-o -type f -name "*.pyc" \
 		-o -type f -name ".coverage" \
 		-o -type f -name "*cdk.context.json" | xargs rm -rf {}
+
+

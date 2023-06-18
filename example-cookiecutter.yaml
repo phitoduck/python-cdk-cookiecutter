@@ -1,0 +1,4 @@
+default_context:
+  repo_name: hi-repo
+  repo_description: description ya'll!
+  import_name: hi_import_name

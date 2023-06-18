@@ -1,8 +1,8 @@
 AWS_PROFILE := "mlops-club"
 
 cdk COMMAND:
-	AWS_PROFILE={{AWS_PROFILE}} \
-	cdk "{{COMMAND}}" --all --app "python infrastructure/app.py"
+	AWS_PROFILE=\{\{AWS_PROFILE}} \
+	cdk "\{\{COMMAND}}" --all --app "python infrastructure/app.py"
 
 cdk-deploy-ci:
 	AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID__IAC} \

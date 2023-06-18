@@ -1,4 +1,5 @@
 {
     "repo_name": "Name of the repository, e.g. sample-full-stack-app",
+    "repo_description": "One-sentence description about the repo.",
     "import_name": "Name of package in imports, e.g. import_name for `from import_name import my_module`"
 }

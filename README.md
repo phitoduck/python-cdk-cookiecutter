@@ -6,16 +6,7 @@ An opinionated template for working with AWS CDK and Python.
 
 ```bash
 pip install --upgrade pipx
-pipx run cookiecutter https://github.com/phitoduck/python-cdk-cookiecutter.git \
-    --output-dir ./example \
-    --checkout main \
-    --directory cookiecutters
-
-pipx run cookiecutter ~/repos/extra/python-cdk-cookiecutter \
-    --output-dir ./example \
-    --checkout main \
-    --directory cookiecutters
-
+pipx run cookiecutter https://github.com/phitoduck/python-cdk-cookiecutter.git
 ```
 
 ## Opinions
@@ -32,3 +23,15 @@ pipx run cookiecutter ~/repos/extra/python-cdk-cookiecutter \
 - Packaging: setuptools and `pyproject.toml`
 - Versioning: Semantic versioning; manually bump `VERSION.txt` before merging
 - Documentation: README and docstrings all use Markdown (as opposed to reStructuredText)
+
+## Contributing
+
+```bash
+# Create a sample project without input
+pipx run cookiecutter ~/repos/extra/python-cdk-cookiecutter \
+    --output-dir ./example \
+    --overwrite-if-exists \
+    --accept-hooks yes \
+    --no-input \
+    --config-file ./example-cookiecutter.yaml
+```
