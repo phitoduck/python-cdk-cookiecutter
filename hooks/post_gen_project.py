@@ -14,13 +14,13 @@ import sys
 
 
 REPO_NAME = '{{ cookiecutter.repo_name }}'
+REPO_ROOT_DIR = Path.cwd()
 
 def main():
-    cwd = Path.cwd()
-    run_git_init(repo_root_dir=cwd)
-    commit_all_files(repo_root_dir=cwd)
-    create_version_txt_symlinks(repo_root_dir=cwd)
-    execute_pre_commit(repo_root_dir=cwd)
+    run_git_init(repo_root_dir=REPO_ROOT_DIR)
+    commit_all_files(repo_root_dir=REPO_ROOT_DIR)
+    create_version_txt_symlinks(repo_root_dir=REPO_ROOT_DIR)
+    execute_pre_commit(repo_root_dir=REPO_ROOT_DIR)
 
 
 def run_git_init(repo_root_dir: Path):
