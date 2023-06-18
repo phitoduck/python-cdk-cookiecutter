@@ -1,14 +1,19 @@
-{% raw %}
 AWS_REGION := "us-west-2"
 AWS_PROFILE := "mlops-club"
 
 cdk COMMAND: require-aws-login
-	AWS_PROFILE=\{\{AWS_PROFILE}} \
-	cdk "\{\{COMMAND}}" --all --app "python infrastructure/app.py"
+	AWS_PROFILE="{{ "{{" }}AWS_PROFILE{{ "}}" }}" \
+		cdk "{{ "{{" }}COMMAND{{ "}}" }}" --all --app "python infrastructure/app.py"
 
 install:
 	pip install --upgrade pip
 	pip install pre-commit flake8 flake8-docstrings Flake8-pyproject radon pylint mypy black isort
+
+lint:
+	pipx run pre-commit run --all-files
+
+lint-ci:
+    SKIP=no-commit-to-branch pipx run pre-commit run --all-files
 
 open-aws:
     #!/bin/bash
@@ -19,7 +24,7 @@ require-aws-login:
 	#!/bin/bash
 
 	# Step 1: Determine if we are logged in
-	OUTPUT=$(aws s3 ls --profile \{\{AWS_PROFILE}} 2>&1)
+	OUTPUT=$(aws s3 ls --profile "{{ "{{" }}AWS_PROFILE{{ "}}" }}" 2>&1)
 
 	# Step 2: If we are not logged in, then login
 	if echo "$OUTPUT" | grep -q 'The SSO session associated with this profile has expired or is otherwise invalid.'; then
@@ -32,7 +37,7 @@ require-aws-login:
 # WARNING: this login only lasts for 8 hours
 login-to-aws:
     #!/bin/bash
-    SSO_AWS_PROFILE_NAME="\{\{AWS_PROFILE}}"
+    SSO_AWS_PROFILE_NAME="{{ "{{" }}AWS_PROFILE{{ "}}" }}"
     SSO_AWS_ACCOUNT_ID="630013828440"
     SSO_AWS_START_URL="https://d-926768adcc.awsapps.com/start"
     SSO_AWS_REGION="us-west-2"
@@ -53,7 +58,7 @@ login-to-aws:
     && echo '' \
     && aws sts get-caller-identity --profile ${SSO_AWS_PROFILE_NAME} | cat
 
-install-ci: install
+install-cdk:
 	# install npm
 	apt-get update \
 		&& apt-get upgrade -y \
@@ -67,7 +72,7 @@ get-account-id:
     import json
     import subprocess
 
-    args = ["aws", "sts", "get-caller-identity", "--profile", "{{AWS_PROFILE}}"]
+    args = ["aws", "sts", "get-caller-identity", "--profile", '"{{ "{{" }}AWS_PROFILE{{ "}}" }}"']
     proc = subprocess.run(args, capture_output=True)
     user_data = json.loads(proc.stdout)
     print(user_data["Account"])
@@ -86,28 +91,3 @@ tag-with-latest-version:
 
 push-tags-to-remote:
 	git push origin --tags
-
-clean:
-	find . \
-		-name "node_modules" -prune -false \
-		-o -name "*venv" -prune -false \
-		-o -name ".git" -prune -false \
-		-o -type d -name "*.egg-info" \
-		-o -type d -name "dist" \
-		-o -type d -name ".projen" \
-		-o -type d -name "build_" \
-		-o -type d -name "build" \
-		-o -type d -name "cdk.out" \
-		-o -type d -name ".mypy_cache" \
-		-o -type d -name ".pytest_cache" \
-		-o -type d -name "test-reports" \
-		-o -type d -name "htmlcov" \
-		-o -type d -name ".coverage" \
-		-o -type d -name ".ipynb_checkpoints" \
-		-o -type d -name "__pycache__" \
-		-o -type f -name "coverage.xml" \
-		-o -type f -name ".DS_Store" \
-		-o -type f -name "*.pyc" \
-		-o -type f -name ".coverage" \
-		-o -type f -name "*cdk.context.json" | xargs rm -rf {}
-{% endraw %}

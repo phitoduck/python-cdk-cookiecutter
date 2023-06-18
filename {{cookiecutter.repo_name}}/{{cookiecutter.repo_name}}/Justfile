@@ -1,7 +1,17 @@
+AWS_PROFILE := "mlops-club"
+
+cdk COMMAND:
+	#!/bin/bash
+	set -e
+	just --justfile ../Justfile -- require-aws-login
+	AWS_PROFILE="{{ "{{" }}AWS_PROFILE{{ "}}" }}" \
+		cdk "{{ "{{" }}COMMAND{{ "}}" }}" --all --app "python app.py"
+
 cdk-deploy-ci:
 	AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID__IAC} \
 	AWS_SECRET_ACCESS_KEY=$${AWS_SECRET_ACCESS_KEY__IAC} \
-	cdk deploy --app 'python app.py' --require-approval never --ci
+		cdk deploy --app 'python app.py' --require-approval never --ci
+
 
 install:
 	pip install --upgrade pip
